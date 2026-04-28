@@ -100,12 +100,21 @@
   <script>
     let allMembers = [];
 
-    const colors = ['#ff6b9d','#c084fc','#60a5fa','#34d399','#fbbf24','#f87171','#a78bfa'];
+    // Couleurs par rôle
+    const roleColors = {
+      1: '#f5c842', // 👑 Owner — or
+      2: '#e8e8e8', // 🏆 Co owner — argent
+      3: '#ff6b35', // ⚙️ Administration — orange
+      4: '#e63950', // 🔥 Modérateur — rouge
+      5: '#60a5fa', // 🛠️ Helpeur — bleu
+      6: '#a78bfa', // 🎬 Vidéaste — violet
+      7: '#f472b6', // 💎 Server Booster — rose
+      8: '#34d399', // 🎤 Perm Voc — vert
+      9: '#94a3b8', // 💚 Membre SF — gris
+    };
 
-    function getColor(username) {
-      let hash = 0;
-      for (let c of username) hash += c.charCodeAt(0);
-      return colors[hash % colors.length];
+    function getColor(m) {
+      return roleColors[m.role_priority || 9] || '#94a3b8';
     }
 
     function renderMembers(members) {
@@ -121,10 +130,12 @@
       empty.style.display = 'none';
 
       grid.innerHTML = members.map((m, i) => {
-        const color = getColor(m.username);
+        const color = getColor(m);
         const date = new Date(m.joined_at);
         const dateStr = date.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
         const num = String(i + 1).padStart(3, '0');
+        const roleEmoji = m.role_emoji || '💚';
+        const roleName  = m.role_name  || 'Membre SF';
         return `
           <div class="member-card reveal-up" style="--delay:${(i % 12) * 0.05}s">
             <div class="member-card-num">#${num}</div>
@@ -134,7 +145,7 @@
             </div>
             <div class="member-card-body">
               <h3 class="member-card-name">${m.username}</h3>
-              <p class="member-card-id">ID: ${m.discord_id}</p>
+              <span class="member-role-badge" style="--color:${color}">${roleEmoji} ${roleName}</span>
               <p class="member-card-date">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 ${dateStr}
@@ -147,13 +158,21 @@
       revealElements();
     }
 
-    // Chargement depuis membres-data.js (compatible GitHub Pages ✅)
-    allMembers = [...MEMBRES_DATA].reverse();
+    // Tri par rôle (plus haut en premier), puis par date pour les égalités
+    allMembers = [...MEMBRES_DATA].sort((a, b) => {
+      const pa = a.role_priority || 9;
+      const pb = b.role_priority || 9;
+      if (pa !== pb) return pa - pb;
+      return new Date(a.joined_at) - new Date(b.joined_at);
+    });
     renderMembers(allMembers);
 
     document.getElementById('searchInput').addEventListener('input', function() {
       const q = this.value.toLowerCase().trim();
-      const filtered = q ? allMembers.filter(m => m.username.toLowerCase().includes(q)) : allMembers;
+      const filtered = q ? allMembers.filter(m =>
+        m.username.toLowerCase().includes(q) ||
+        (m.role_name || '').toLowerCase().includes(q)
+      ) : allMembers;
       renderMembers(filtered);
     });
   </script>
