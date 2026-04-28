@@ -95,6 +95,7 @@
   </footer>
 
   <script src="js/sakura.js"></script>
+  <script src="js/membres-data.js"></script>
   <script src="js/main.js"></script>
   <script>
     let allMembers = [];
@@ -146,21 +147,9 @@
       revealElements();
     }
 
-    fetch('api/members.json')
-      .then(r => r.json())
-      .then(data => {
-        allMembers = [...data.members].reverse();
-        renderMembers(allMembers);
-      })
-      .catch(() => {
-        document.getElementById('membersGrid').innerHTML = `
-          <div class="error-state">
-            <div class="error-kanji">⚠</div>
-            <p>Impossible de charger les membres.</p>
-            <p class="error-sub">Assure-toi que le bot Discord est configuré.</p>
-          </div>
-        `;
-      });
+    // Chargement depuis membres-data.js (compatible GitHub Pages ✅)
+    allMembers = [...MEMBRES_DATA].reverse();
+    renderMembers(allMembers);
 
     document.getElementById('searchInput').addEventListener('input', function() {
       const q = this.value.toLowerCase().trim();
