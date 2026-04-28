@@ -151,33 +151,28 @@
   </footer>
 
   <script src="js/sakura.js"></script>
+  <script src="js/membres-data.js"></script>
   <script src="js/main.js"></script>
   <script>
-    // Charger aperçu des membres depuis la base de données JSON
-    fetch('api/members.json')
-      .then(r => r.json())
-      .then(data => {
-        const preview = document.getElementById('membersPreview');
-        const members = data.members.slice(-6).reverse();
-        document.getElementById('memberCount').textContent = data.members.length;
-        if (members.length === 0) {
-          preview.innerHTML = '<p class="no-members">Aucun membre encore. Sois le premier !</p>';
-          return;
-        }
-        preview.innerHTML = members.map(m => `
-          <div class="member-pill reveal-up">
-            <div class="member-avatar">${m.username.charAt(0).toUpperCase()}</div>
-            <div class="member-info">
-              <span class="member-name">${m.username}</span>
-              <span class="member-date">${new Date(m.joined_at).toLocaleDateString('fr-FR')}</span>
-            </div>
+    // Chargement depuis membres-data.js (compatible GitHub Pages ✅)
+    const preview = document.getElementById('membersPreview');
+    const members = [...MEMBRES_DATA].reverse().slice(0, 6);
+    document.getElementById('memberCount').textContent = MEMBRES_DATA.length;
+
+    if (members.length === 0) {
+      preview.innerHTML = '<p class="no-members">Aucun membre encore. Sois le premier !</p>';
+    } else {
+      preview.innerHTML = members.map(m => `
+        <div class="member-pill reveal-up">
+          <div class="member-avatar">${m.username.charAt(0).toUpperCase()}</div>
+          <div class="member-info">
+            <span class="member-name">${m.username}</span>
+            <span class="member-date">${new Date(m.joined_at).toLocaleDateString('fr-FR')}</span>
           </div>
-        `).join('');
-        revealElements();
-      })
-      .catch(() => {
-        document.getElementById('membersPreview').innerHTML = '<p class="no-members">Connecte le bot Discord pour voir les membres !</p>';
-      });
+        </div>
+      `).join('');
+      revealElements();
+    }
   </script>
 </body>
 </html>
