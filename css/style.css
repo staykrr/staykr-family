@@ -1116,3 +1116,18 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
   .search-box { width: 100%; }
   .join-card-header { flex-direction: column; }
 }
+
+/* ---- Badge de rôle sur les cartes membres ---- */
+.member-role-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: rgba(from var(--color, #94a3b8) r g b / 0.15);
+  border: 1px solid var(--color, #94a3b8);
+  color: var(--color, #94a3b8);
+  margin-bottom: 6px;
+  white-space: nowrap;
+}
