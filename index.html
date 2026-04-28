@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STAYKR FAMILY — Accueil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700;900&family=Bebas+Neue&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Particules de sakura -->
+  <div class="sakura-container" id="sakuraContainer"></div>
+
+  <!-- Fond animé -->
+  <div class="bg-gradient"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="kanji">家族</span>
+      <span class="brand">STAYKR FAMILY</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Accueil</a></li>
+      <li><a href="membres.html">Membres</a></li>
+      <li><a href="rejoindre.html">Rejoindre</a></li>
+    </ul>
+    <div class="nav-discord">
+      <a href="rejoindre.html" class="btn-discord">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.114 18.1.127 18.115a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Rejoindre
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="torii-gate">
+        <div class="torii-top"></div>
+        <div class="torii-mid"></div>
+        <div class="torii-pillars">
+          <div class="pillar"></div>
+          <div class="pillar"></div>
+        </div>
+      </div>
+
+      <div class="hero-text">
+        <p class="hero-sub reveal-up">ようこそ — Bienvenue</p>
+        <h1 class="hero-title reveal-up">
+          <span class="line1">STAYKR</span>
+          <span class="line2">FAMILY</span>
+        </h1>
+        <p class="hero-desc reveal-up">La communauté Discord où chaque membre devient famille.<br>Rejoins-nous et laisse ta trace.</p>
+        <div class="hero-cta reveal-up">
+          <a href="rejoindre.html" class="btn-primary">Rejoindre le serveur</a>
+          <a href="membres.html" class="btn-secondary">Voir les membres</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Défiler</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card reveal-up">
+        <div class="stat-kanji">人</div>
+        <div class="stat-number" data-target="0" id="memberCount">0</div>
+        <div class="stat-label">Membres</div>
+      </div>
+      <div class="stat-card reveal-up">
+        <div class="stat-kanji">絆</div>
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Liens créés</div>
+      </div>
+      <div class="stat-card reveal-up">
+        <div class="stat-kanji">心</div>
+        <div class="stat-number">1</div>
+        <div class="stat-label">Communauté</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Derniers membres -->
+  <section class="recent-section">
+    <div class="section-header">
+      <div class="section-line"></div>
+      <h2 class="section-title">最新メンバー — Derniers Membres</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="members-preview" id="membersPreview">
+      <!-- Chargé dynamiquement via JS -->
+      <div class="loading-members">
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+      </div>
+    </div>
+
+    <div class="section-cta">
+      <a href="membres.html" class="btn-outline">Voir tous les membres →</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="features-grid">
+      <div class="feature-card reveal-up">
+        <div class="feature-icon">⛩️</div>
+        <h3>Communauté Unique</h3>
+        <p>Un espace où chaque voix compte et chaque membre laisse son empreinte.</p>
+      </div>
+      <div class="feature-card reveal-up">
+        <div class="feature-icon">🌸</div>
+        <h3>Ambiance Familiale</h3>
+        <p>Plus qu'un serveur, une véritable famille unie par la passion.</p>
+      </div>
+      <div class="feature-card reveal-up">
+        <div class="feature-icon">⚡</div>
+        <h3>Toujours Actif</h3>
+        <p>Des événements, des discussions et de la bonne humeur au quotidien.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span class="kanji">家族</span>
+        <span>STAYKR FAMILY</span>
+      </div>
+      <p class="footer-quote">「家族は血だけで繋がるのではない」<br><em>La famille ne se lie pas seulement par le sang</em></p>
+      <div class="footer-links">
+        <a href="index.html">Accueil</a>
+        <a href="membres.html">Membres</a>
+        <a href="rejoindre.html">Rejoindre</a>
+      </div>
+      <p class="footer-copy">© 2025 STAYKR FAMILY — Tous droits réservés</p>
+    </div>
+  </footer>
+
+  <script src="js/sakura.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Charger aperçu des membres depuis la base de données JSON
+    fetch('api/members.json')
+      .then(r => r.json())
+      .then(data => {
+        const preview = document.getElementById('membersPreview');
+        const members = data.members.slice(-6).reverse();
+        document.getElementById('memberCount').textContent = data.members.length;
+        if (members.length === 0) {
+          preview.innerHTML = '<p class="no-members">Aucun membre encore. Sois le premier !</p>';
+          return;
+        }
+        preview.innerHTML = members.map(m => `
+          <div class="member-pill reveal-up">
+            <div class="member-avatar">${m.username.charAt(0).toUpperCase()}</div>
+            <div class="member-info">
+              <span class="member-name">${m.username}</span>
+              <span class="member-date">${new Date(m.joined_at).toLocaleDateString('fr-FR')}</span>
+            </div>
+          </div>
+        `).join('');
+        revealElements();
+      })
+      .catch(() => {
+        document.getElementById('membersPreview').innerHTML = '<p class="no-members">Connecte le bot Discord pour voir les membres !</p>';
+      });
+  </script>
+</body>
+</html>

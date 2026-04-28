@@ -1,0 +1,15 @@
+{
+  "members": [
+    {
+      "discord_id": "123456789012345678",
+      "username": "STAYKR",
+      "joined_at": "2025-01-01T10:00:00Z"
+    },
+    {
+      "discord_id": "234567890123456789",
+      "username": "Exemple_Membre",
+      "joined_at": "2025-01-05T14:32:00Z"
+    }
+  ],
+  "last_updated": "2025-01-05T14:32:00Z"
+}
