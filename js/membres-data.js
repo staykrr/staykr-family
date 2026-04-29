@@ -22,7 +22,7 @@
  */
  
 const MEMBRES_DATA = [
-  { discord_id: "823879097179701299", username: "staykr.", joined_at: "2026-01-30", role_name: "Owner", role_emoji: "👑", role_priority: 1 },
+  { discord_id: "823879097179701299", username: "staykr.", joined_at: "2026-01-28", role_name: "Owner", role_emoji: "👑", role_priority: 1 },
   { discord_id: "907524038157545512", username: "_aonyx_", joined_at: "2026-01-28", role_name: "Owner", role_emoji: "👑", role_priority: 1 },
   { discord_id: "1424771470881722519", username: "bolemvnn", joined_at: "2026-01-30", role_name: "Administration", role_emoji: "⚙️", role_priority: 3 },
   { discord_id: "1231677239192719585", username: "esmiaule", joined_at: "2026-02-24", role_name: "Administration", role_emoji: "⚙️", role_priority: 3 },
